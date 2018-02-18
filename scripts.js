@@ -43,6 +43,11 @@ function newGame() {
         playerNameElem.innerHTML = player.name;
         setGamePoints(); 
     }
+    else {
+        alert('If you want to play you must insert player name');
+        gameState = 'notStarted';
+        setGameElements();
+    }
 }
 
 function setGameElements() {
@@ -80,20 +85,20 @@ function checkRoundWinner(playerPick, computerPick) {
 
   var winnerIs = 'player';
 
-    if (playerPick == computerPick) {
+    if (playerPick === computerPick) {
         winnerIs = 'noone';
     } else if (
-        (computerPick == 'rock' &&  playerPick == 'scissors') ||
-        (computerPick == 'scissors' &&  playerPick == 'paper') ||
-        (computerPick == 'paper' &&  playerPick == 'rock')) {
+        (computerPick === 'rock' &&  playerPick === 'scissors') ||
+        (computerPick === 'scissors' &&  playerPick === 'paper') ||
+        (computerPick === 'paper' &&  playerPick === 'rock')) {
 
         winnerIs = 'computer';
     }
 
-    if (winnerIs == 'player') {
+    if (winnerIs === 'player') {
         playerResultElem.innerHTML = "Win!";
         player.score++;
-    } else if (winnerIs == 'computer') {
+    } else if (winnerIs === 'computer') {
         computerResultElem.innerHTML = "Win!";
         computer.score++;
     }  
@@ -107,12 +112,12 @@ function setGamePoints() {
 }
 
 function setTheWinner() {
-    if (player.score == 10) {
+    if (player.score === 10) {
         alert('The winner is : ' + player.name + '!');
         gameState = 'ended';
         setGameElements();
     }
-    else if (computer.score == 10) {
+    else if (computer.score === 10) {
         alert('The winner is : Computer');
         gameState = 'ended';
         setGameElements();
